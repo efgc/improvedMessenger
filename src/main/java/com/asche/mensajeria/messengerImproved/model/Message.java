@@ -8,21 +8,21 @@ import java.util.Map;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-
-
+import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement
+@XmlType(propOrder={"id", "created", "author", "message", "links"})
 public class Message {
 	private long id;
 	private String message;
 	private Date created;
 	private String author;
-	@XmlTransient
-	private Map<Long, Comment> comments=new HashMap<>();
+
+	private Map<Long, Comment> comments = new HashMap<>();
 	private List<Link> links = new ArrayList<>();
-	
+
 	public Message() {
-		
+
 	}
 
 	public Message(long id, String message, String author) {
@@ -65,6 +65,7 @@ public class Message {
 		this.author = author;
 	}
 
+	@XmlTransient
 	public Map<Long, Comment> getComments() {
 		return comments;
 	}
@@ -80,7 +81,7 @@ public class Message {
 	public void setLinks(List<Link> links) {
 		this.links = links;
 	}
-	
+
 	public void addLink(String url, String rel, String method) {
 		Link link = new Link();
 		link.setUrl(url);
@@ -88,5 +89,5 @@ public class Message {
 		link.setMethod(method);
 		links.add(link);
 	}
-	
+
 }

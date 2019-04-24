@@ -2,7 +2,7 @@ package com.asche.mensajeria.messengerImproved.beans;
 
 import javax.ws.rs.QueryParam;
 
-public class ProfileFilterBean {
+public class FilterBean {
 	
 	private @QueryParam("year") int year;
 	private @QueryParam("start") int start;

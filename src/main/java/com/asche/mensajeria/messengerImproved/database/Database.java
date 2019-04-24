@@ -43,6 +43,6 @@ public class Database {
 		Map<Long, Comment> comments = new HashMap<>();
 		comments.put(1L, new Comment(1L, "Saludos Rodrigo", "Camarografa"));
 		comments.put(2L, new Comment(2L, "Un buen tepache xD", "MadHunter"));
-
+		message.setComments(comments);
 	}
 }

@@ -83,6 +83,8 @@ public class ProfileService {
 		}
 		Profile profileOld = profiles.get(profileNew.getProfileName());
 		// verifying if new profileId is the same as old
+		//TODO CHECK THAT PROFILE NAME, FIRST AND LAST NAME  AND 
+		//DATE ARE NOT EMPTY
 		if (profileNew.getId() != profileOld.getId()) {
 			profileNew.setId(profileOld.getId());
 		}

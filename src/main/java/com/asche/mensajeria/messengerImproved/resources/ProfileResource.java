@@ -20,7 +20,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.core.Response.Status;
 
-import com.asche.mensajeria.messengerImproved.beans.ProfileFilterBean;
+import com.asche.mensajeria.messengerImproved.beans.FilterBean;
 import com.asche.mensajeria.messengerImproved.model.Link;
 import com.asche.mensajeria.messengerImproved.model.Profile;
 import com.asche.mensajeria.messengerImproved.service.ProfileService;
@@ -37,7 +37,7 @@ public class ProfileResource {
 	ProfileService profileService = new ProfileService();
 
 	@GET
-	public List<Profile> getProfilesJson(@BeanParam ProfileFilterBean filterBean, @Context UriInfo uriInfo) {
+	public List<Profile> getProfilesJson(@BeanParam FilterBean filterBean, @Context UriInfo uriInfo) {
 		// List starts counting from 0 so we deduct 1
 		List<Profile> profileList = new ArrayList<>();;
 		
@@ -101,19 +101,30 @@ public class ProfileResource {
 	
 	//METODOS QUE AGREGAN LINKS DE HATEOAS
 	//METODO PARA SELF
-	private String getUriForSelf(UriInfo uriInfo, Profile profile) {
+	private String getGenericLink(UriInfo uriInfo, Profile profile) {
 		String link = uriInfo.getBaseUriBuilder()
 				.path(ProfileResource.class)
 				.path(profile.getProfileName())
 				.build().toString();
 		return link;
 	}
+	//METODO PARA ALL MESSAGES
+	private String getLinkForAllMessages(UriInfo uriInfo, Profile profile) {
+		String link = uriInfo.getBaseUriBuilder()
+				.path(MessageResource.class)
+				.path(MessageResource.class, "getMessagesByAuthor")
+				.resolveTemplate("author", profile.getProfileName())
+				.build()
+				.toString();
+		return link;
+	}
 	
 	private void addLinks(UriInfo uriInfo, Profile profile) {
 		profile.setLinks(new ArrayList<Link>());
-		profile.addLink(this.getUriForSelf(uriInfo, profile), "self", "GET");
-		profile.addLink(this.getUriForSelf(uriInfo, profile), "update","UPDATE" );
-		profile.addLink(this.getUriForSelf(uriInfo, profile), "delete","DELETE" );
+		profile.addLink(this.getGenericLink(uriInfo, profile), "self", "GET");
+		profile.addLink(this.getGenericLink(uriInfo, profile), "update","UPDATE" );
+		profile.addLink(this.getGenericLink(uriInfo, profile), "delete","DELETE" );
+		profile.addLink(this.getLinkForAllMessages(uriInfo, profile), "all messages", "GET");
 	}
 
 }
