@@ -38,7 +38,7 @@
 						</goals>
 						<configuration>
 							<skipCache>false</skipCache>
-							<url>https://github.com/swagger-api/swagger-ui/master.tar.gz</url>
+							<url>https://codeload.github.com/swagger-api/swagger-ui/zip/master</url>
 							<unpack>true</unpack>
 							<outputDirectory>${project.build.directory}</outputDirectory>
 						</configuration>
@@ -56,7 +56,7 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.build.directory}/${project.build.finalName}/docs</outputDirectory>
+							<outputDirectory>${project.build.directory}/${build.finalName}/docs</outputDirectory>
 							<resources>
 								<resource>
 									<directory>${project.build.directory}/swagger-ui-master/dist</directory>
@@ -79,11 +79,12 @@
 					</execution>
 				</executions>
 				<configuration>
-					<file>${project.build.directory}/todo/docs/index.html</file>
+					<file>${project.build.directory}/${build.finalName}/docs/index.html</file>
 					<replacements>
 						<replacement>
 							<token>https://petstore.swagger.io/v2/swagger.json</token>
-							<value>/todo/api/swagger.json</value>
+
+							<value>/${build.finalName}/api/swagger.json</value>
 						</replacement>
 					</replacements>
 				</configuration>
@@ -104,6 +105,7 @@
 		</dependencies>
 	</dependencyManagement>
 
+
 	<dependencies>
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
@@ -123,7 +125,12 @@
 			<artifactId>swagger-jaxrs</artifactId>
 			<version>1.5.22</version>
 		</dependency>
-
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
 
 	</dependencies>
 	<properties>

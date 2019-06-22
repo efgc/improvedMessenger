@@ -24,10 +24,14 @@ import com.asche.mensajeria.messengerImproved.model.Link;
 import com.asche.mensajeria.messengerImproved.model.Profile;
 import com.asche.mensajeria.messengerImproved.service.ProfileService;
 
+import io.swagger.annotations.Api;
+
+
 
 //Esta clase atiende las peticiones segun sea el metodo enviado
 //Anotacion path indica la ruta que atendera
 @Path("/profiles")
+@Api(tags= {"Profiles"})
 //Este endpoint es capaz de producir y consumir JSON y XML
 @Produces(value = { MediaType.APPLICATION_JSON, MediaType.TEXT_XML })
 @Consumes(value = { MediaType.APPLICATION_JSON, MediaType.TEXT_XML })

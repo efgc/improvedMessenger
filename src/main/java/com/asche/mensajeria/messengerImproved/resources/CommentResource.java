@@ -15,7 +15,10 @@ import javax.ws.rs.core.MediaType;
 import com.asche.mensajeria.messengerImproved.model.Comment;
 import com.asche.mensajeria.messengerImproved.service.CommentService;
 
+import io.swagger.annotations.Api;
+
 @Path("/")
+@Api(tags= {"Comments"})
 @Produces(value = { MediaType.APPLICATION_JSON, MediaType.TEXT_XML })
 @Consumes(value = { MediaType.APPLICATION_JSON, MediaType.TEXT_XML })
 public class CommentResource {

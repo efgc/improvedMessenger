@@ -24,7 +24,10 @@ import com.asche.mensajeria.messengerImproved.model.Link;
 import com.asche.mensajeria.messengerImproved.model.Message;
 import com.asche.mensajeria.messengerImproved.service.MessageService;
 
+import io.swagger.annotations.Api;
+
 @Path("/messages")
+@Api(tags= {"Messages"})
 @Consumes(value = { MediaType.APPLICATION_JSON, MediaType.TEXT_XML })
 @Produces(value = { MediaType.APPLICATION_JSON, MediaType.TEXT_XML })
 public class MessageResource {

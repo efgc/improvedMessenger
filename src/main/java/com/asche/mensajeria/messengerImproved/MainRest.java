@@ -15,9 +15,9 @@ public class MainRest extends Application {
 		BeanConfig beanConfig = new BeanConfig();
 
 		beanConfig.setVersion("1.0.0");
-		beanConfig.setTitle("Todo API");
-		beanConfig.setBasePath("/todo/api");
-		beanConfig.setResourcePackage("com.asche.mensajeria.messengerImproved");
+		beanConfig.setTitle("Messenger API");
+		beanConfig.setBasePath("/messengerImproved/api");
+		beanConfig.setResourcePackage("com.asche.mensajeria");
 		beanConfig.setScan(true);
 	}
 
