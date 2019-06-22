@@ -15,16 +15,15 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.core.UriInfo;
 
 import com.asche.mensajeria.messengerImproved.beans.FilterBean;
 import com.asche.mensajeria.messengerImproved.model.Link;
 import com.asche.mensajeria.messengerImproved.model.Profile;
 import com.asche.mensajeria.messengerImproved.service.ProfileService;
-import com.sun.jndi.toolkit.url.Uri;
+
 
 //Esta clase atiende las peticiones segun sea el metodo enviado
 //Anotacion path indica la ruta que atendera
